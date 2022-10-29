@@ -3,8 +3,9 @@ import { View, Text, StyleSheet, Animated, FlatList, TouchableOpacity, Image, Sc
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { SharedElement } from 'react-navigation-shared-element';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { exercise1Spec, width } from '../../../config/ex1_data/theme';
+import { exercise1Spec, width, height } from '../../../config/ex1_data/theme';
 import * as Animatable from 'react-native-animatable';
+import MapView from 'react-native-maps';
 
 const { ITEM_WIDTH, ITEM_HEIGHT, RADIUS, SPACING, FULL_SIZE } = exercise1Spec;
 
@@ -89,11 +90,19 @@ export default function travelListDetail({ navigation, route }) {
                                 }}
                             >
                                 <TouchableOpacity
-                                    onPress={() => navigation.push('Map', { item })}
+                                    onPress={() => { }}
                                 >
-                                    <Image source={{ uri: 'https://miro.medium.com/max/124/1*qYUvh-EtES8dtgKiBRiLsA.png' }}
-                                        style={{ width: '100%', height: '78%', resizeMode: 'cover' }}
-                                    />
+                                    <MapView
+                                        style={styles.map}
+                                        onPress={() => navigation.push('Map', { item })}
+                                        initialRegion={{
+                                            latitude: 16.794182,
+                                            longitude: 96.155991,
+                                            latitudeDelta: 0.01,
+                                            longitudeDelta: 0.01 * (width / height),
+                                        }}
+                                    >
+                                    </MapView>
                                     <Text style={{ marginTop: 15 }}>Activity #{item + 1}</Text>
                                 </TouchableOpacity>
                             </Animatable.View>
@@ -111,9 +120,6 @@ travelListDetail.sharedElements = (route, otherRoute, showing) => {
         {
             id: `item.${item.key}.photo`
         },
-        // {
-        //     id: `item.${item.key}.location`
-        // }
     ]
 };
 
@@ -127,5 +133,9 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 70,
         left: SPACING * 2,
+    },
+    map: {
+        width: '100%',
+        height: '78%',
     },
 });

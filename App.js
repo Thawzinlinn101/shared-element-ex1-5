@@ -22,7 +22,7 @@ export default function index({ navigation }) {
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="Exercise1" component={Exercise1} options={{ headerShown: false }} />
         <Stack.Screen name="TravelListDetail" component={TravelListDetail} options={{ headerShown: false }} />
-        <Stack.Screen name="Map" component={Map} options={{ headerShown: false }} />
+        <Stack.Screen name="Map" component={Map} />
         <Stack.Screen name="Exercise2" component={Exercise2} options={{ headerShown: false }} />
         <Stack.Screen name="Exercise3" component={Exercise3} options={{ headerShown: false }} />
         <Stack.Screen name="Exercise4" component={Exercise4} options={{ headerShown: false }} />
